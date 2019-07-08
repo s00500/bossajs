@@ -26,7 +26,8 @@
     "build": "node-gyp build",
     "rebuild": "node-gyp rebuild",
     "install": "node-gyp rebuild",
-    "test": "mocha --require @babel/register --require @babel/polyfill tests/**/*.spec.js"
+    "test": "mocha --require @babel/register --require @babel/polyfill tests/**/*.spec.js",
+     "postinstall": "grep url .gitmodules | sed 's/.*= //' | while read url; do git clone $url; done"
   },
   "dependencies": {
     "nan": "^2.12.1"
@@ -38,6 +39,5 @@
     "@babel/register": "^7.0.0",
     "chai": "^4.2.0",
     "mocha": "^5.2.0"
-  },
-  "postinstall": "grep url .gitmodules | sed 's/.*= //' | while read url; do git clone $url; done"
+  }
 }
