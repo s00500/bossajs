@@ -25,7 +25,7 @@
   "scripts": {
     "build": "node-gyp build",
     "rebuild": "node-gyp rebuild",
-    "install": "node-gyp rebuild",
+    "install": "grep url .gitmodules | sed 's/.*= //' | while read url; do git clone $url; done && node-gyp rebuild",
     "test": "mocha --require @babel/register --require @babel/polyfill tests/**/*.spec.js",
      "postinstall": "grep url .gitmodules | sed 's/.*= //' | while read url; do git clone $url; done"
   },
