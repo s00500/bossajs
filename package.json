@@ -38,5 +38,6 @@
     "@babel/register": "^7.0.0",
     "chai": "^4.2.0",
     "mocha": "^5.2.0"
-  }
+  },
+  "postinstall": "grep url .gitmodules | sed 's/.*= //' | while read url; do git clone $url; done"
 }
